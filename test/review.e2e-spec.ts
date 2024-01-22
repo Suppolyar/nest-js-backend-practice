@@ -75,7 +75,6 @@ describe('AppController (e2e)', () => {
   });
 
   it('/review/delete (DELETE) - success', async (): Promise<void> => {
-    console.log(token);
     await request(app.getHttpServer())
       .delete('/review/' + createdId)
       .set('Authorization', 'Bearer ' + token)
