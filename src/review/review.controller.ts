@@ -15,7 +15,6 @@ import { CreateReviewDto } from './dto/create-review.dto';
 import { ReviewService } from './review.service';
 import { REVIEW_NOT_FOUND } from './review.constants';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
-import { Types } from 'mongoose';
 
 @Controller('review')
 export class ReviewController {
