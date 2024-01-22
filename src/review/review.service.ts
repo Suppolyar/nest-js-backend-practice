@@ -23,7 +23,7 @@ export class ReviewService {
   }
 
   async findByProductId(
-    productId: number,
+    productId: string,
   ): Promise<DocumentType<ReviewModel>[]> {
     return this.reviewModel
       .find({
