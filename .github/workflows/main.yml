@@ -5,15 +5,18 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Publish to registy
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Push to GitHub Packages
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          registry: docker.pkg.github.com
           name: docker.pkg.github.com/Suppolyar/nest-js-backend-practice/nest-js-backend-practice
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "develop"
+          registry: docker.pkg.github.com
+          tags: develop
+
