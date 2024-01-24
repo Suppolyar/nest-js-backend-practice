@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nest-practice-api:
+    image: nest-js-backend-practice:latest
+    container_name: nest-js-backend-practice
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.env:/opt/app/.env
