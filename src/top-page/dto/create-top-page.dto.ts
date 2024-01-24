@@ -1,4 +1,4 @@
-import { TopLevelCategory } from '../top-page.model/top-page.model';
+import { Type } from 'class-transformer';
 import {
   IsArray,
   IsEnum,
@@ -7,7 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
+import { TopLevelCategory } from '../top-page.model/top-page.model';
 
 export class HhDataDto {
   @IsNumber()
@@ -45,6 +45,12 @@ export class CreateTopPageDto {
   title: string;
 
   @IsString()
+  metaTitle: string;
+
+  @IsString()
+  metaDescription: string;
+
+  @IsString()
   category: string;
 
   @IsOptional()
@@ -53,6 +59,7 @@ export class CreateTopPageDto {
   hh?: HhDataDto;
 
   @IsArray()
+  @ValidateNested()
   @Type(() => TopPageAdvantageDto)
   advantages: TopPageAdvantageDto[];
 
