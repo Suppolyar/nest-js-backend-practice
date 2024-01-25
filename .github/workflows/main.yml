@@ -8,6 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check secret length
+        run: |
+          echo "Length of DOCKER_USERNAME: ${#DOCKER_USERNAME}"
+          echo "Length of DOCKER_PASSWORD: ${#DOCKER_PASSWORD}"
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - uses: actions/checkout@master
       - name: Publish to registry
         uses: elgohr/Publish-Docker-Github-Action@v5
