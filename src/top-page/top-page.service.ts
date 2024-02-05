@@ -6,7 +6,7 @@ import {
   TopLevelCategory,
   TopPageModel,
 } from './top-page.model/top-page.model';
-
+import { subDays } from 'date-fns';
 @Injectable()
 export class TopPageService {
   constructor(
@@ -72,6 +72,12 @@ export class TopPageService {
           $caseSensitive: false,
         },
       })
+      .exec();
+  }
+
+  async findForHhUpdate(date: Date) {
+    return this.topPageModel
+      .find({ firstCategory: 0, 'hh.updatedAt': { $lt: subDays(date, 1) } })
       .exec();
   }
 }
